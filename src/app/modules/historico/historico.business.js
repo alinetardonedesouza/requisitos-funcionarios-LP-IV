@@ -81,7 +81,7 @@ exports.listaHistoricoPorId = async (historicoId) => {
 
     try {
 
-        const historico = await repositories.find({id: historicoId})
+        const historico = await repositories.findOne(historicoId)
 
         if (!historico) {
 

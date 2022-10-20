@@ -8,6 +8,6 @@ module.exports = app => {
     app
         .use('/colaboradores', colaboradorRoute)
         .use('/usuarios', usuarioRoute)
-        .use('/historico', historicoRoute)
+        .use('/historicos', historicoRoute)
         .use('/feedbacks', feedbackRoute)
 }

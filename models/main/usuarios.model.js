@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const Colaboradores = sequelize.define('Colaboradores', {
+    const Usuarios = sequelize.define('Usuarios', {
 
         id: {
 
@@ -9,26 +9,10 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        telefone: {
-
-            type: DataTypes.INTEGER,
-        },
-        nome: {
-
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        endereco: {
-
-            type: DataTypes.STRING
-        },
-        nascimento: {
-
-            type: DataTypes.DATE
-        },
         email: {
 
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
 
                 isEmail: {
@@ -37,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
                     msg: "E-mail inválido."
                 }
             }
+        },
+        senha: {
+
+            type: DataTypes.STRING,
+            allowNull: false
         },
         createdAt: {
 
@@ -56,22 +45,8 @@ module.exports = (sequelize, DataTypes) => {
 
             createdAt: false,
             updatedAt: false,
-            tableName: 'Colaboradores'
+            tableName: 'Usuarios'
         })
 
-    Colaboradores.associate = models => {
-
-        Colaboradores.hasMany(models.Feedbacks, {
-
-            foreignKey: 'colaboradorId',
-            as: 'feedbacks'
-        })
-        
-        Colaboradores.hasMany(models.Historicos, {
-
-            foreignKey: 'colaboradorId',
-            as: 'historicos'
-        })
-    }
-    return Colaboradores
+    return Usuarios
 }

@@ -1,5 +1,4 @@
 const business = require('./usuarios.business')
-// const logger = require("../../../../logger")
 class clsUsuarios {
 
     static async criaUsuario(req, res) {
@@ -12,12 +11,10 @@ class clsUsuarios {
 
             let usuarioCriado = await business.criaUsuario(usuario)
             
-            logger.info(`usuario criado: ${usuarioCriado}`)
             return res.status(201).json(usuarioCriado)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -33,13 +30,10 @@ class clsUsuarios {
 
             let usuarioEditado = await business.editaUsuario(usuarioId, usuario)
 
-            logger.info(`usuario editado: ${usuarioEditado}`)
-
             return res.status(200).json(usuarioEditado)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -54,13 +48,10 @@ class clsUsuarios {
 
             let usuarioExcluido = await business.excluiUsuario(usuarioId)
 
-            logger.info(`usuario excluído: ${usuarioExcluido}`)
-
             return res.status(200).json(usuarioExcluido)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -75,7 +66,6 @@ class clsUsuarios {
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -92,7 +82,6 @@ class clsUsuarios {
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }

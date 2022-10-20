@@ -1,5 +1,4 @@
 const business = require('./colaboradores.business')
-// const logger = require("../../../../logger")
 class clsColaboradores {
 
     static async criaColaborador(req, res) {
@@ -12,12 +11,10 @@ class clsColaboradores {
 
             let colaboradorCriado = await business.criaColaborador(colaborador)
             
-            logger.info(`Colaborador criado: ${colaboradorCriado}`)
             return res.status(201).json(colaboradorCriado)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -33,13 +30,10 @@ class clsColaboradores {
 
             let colaboradorEditado = await business.editaColaborador(colaboradorId, colaborador)
 
-            logger.info(`Colaborador editado: ${colaboradorEditado}`)
-
             return res.status(200).json(colaboradorEditado)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -54,13 +48,10 @@ class clsColaboradores {
 
             let colaboradorExcluido = await business.excluiColaborador(colaboradorId)
 
-            logger.info(`Colaborador excluído: ${colaboradorExcluido}`)
-
             return res.status(200).json(colaboradorExcluido)
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -75,7 +66,6 @@ class clsColaboradores {
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }
@@ -92,7 +82,6 @@ class clsColaboradores {
 
         } catch (error) {
 
-            logger.error(error)
             return res.status(error.code ?? 500).send(error.message)
         }
     }

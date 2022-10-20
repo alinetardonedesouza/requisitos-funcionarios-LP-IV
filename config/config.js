@@ -1,30 +1,19 @@
-require('dotenv').config();
+const config = require('./environment.config')
 
-module.exports = {
-    development: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PWD,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        dialect: process.env.DB_DIALECT,
-        logging: true
-    },
-    test: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PWD,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        dialect: process.env.DB_DIALECT,
-        logging: true
-    },
-    production: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PWD,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        dialect: process.env.DB_DIALECT
+let sequelizeConfig = {
+
+    username: config.DB_USER,
+    password: config.DB_PWD,
+    database: config.DB_NAME,
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    dialect: config.DB_DIALECT,
+    logging: false,
+
+    dialectOptions: {
+
+        multipleStatements: true
     }
-};
+}
+
+module.exports = sequelizeConfig

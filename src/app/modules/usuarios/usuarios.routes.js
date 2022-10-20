@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-const colaboradorController = require('./usuarios.controller')
+const usuarioController = require('./usuarios.controller')
 
-router.post('/user/:userId', colaboradorController.criaColaborador)
-router.put('/:catalogId', colaboradorController.editaColaborador)
-router.delete('/:catalogId', colaboradorController.excluiColaborador)
-router.get('/', colaboradorController.listaColaboradores)
-router.get('/user/:userId', colaboradorController.listaColaboradorPorId)
+router.post('/', usuarioController.criaUsuario)
+router.put('/:userId', usuarioController.editaUsuario)
+router.delete('/:userId', usuarioController.excluiUsuario)
+router.get('/', usuarioController.listaUsuarios)
+router.get('/user/:userId', usuarioController.listaUsuarioPorId)
 
 module.exports = router

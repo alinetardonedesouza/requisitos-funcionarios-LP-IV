@@ -3,10 +3,10 @@ const router = express.Router()
 
 const colaboradorController = require('./colaboradores.controller')
 
-router.post('/user/:userId', colaboradorController.criaColaborador)
-router.put('/:catalogId', colaboradorController.editaColaborador)
-router.delete('/:catalogId', colaboradorController.excluiColaborador)
+router.post('/', colaboradorController.criaColaborador)
+router.put('/:colaboradorId', colaboradorController.editaColaborador)
+router.delete('/:colaboradorId', colaboradorController.excluiColaborador)
 router.get('/', colaboradorController.listaColaboradores)
-router.get('/user/:userId', colaboradorController.listaColaboradorPorId)
+router.get('/:colaboradorId', colaboradorController.listaColaboradorPorId)
 
 module.exports = router

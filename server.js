@@ -1,6 +1,6 @@
 const config = require('./config/environment.config')
 const database = require("./src/database/config")
-const mongoose = require("mongoose")
+// const mongoose = require("mongoose")
 const express = require('express')
 const cors = require('cors')
 // const morgan = require('morgan')

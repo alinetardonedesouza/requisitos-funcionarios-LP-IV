@@ -81,7 +81,7 @@ exports.listaUsuarioPorId = async (usuarioId) => {
 
     try {
 
-        const usuario = await repositories.find({id: usuarioId})
+        const usuario = await repositories.findOne(usuarioId)
 
         if (!usuario) {
 

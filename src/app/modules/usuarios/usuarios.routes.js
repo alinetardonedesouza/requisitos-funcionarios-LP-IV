@@ -4,9 +4,9 @@ const router = express.Router()
 const usuarioController = require('./usuarios.controller')
 
 router.post('/', usuarioController.criaUsuario)
-router.put('/:userId', usuarioController.editaUsuario)
-router.delete('/:userId', usuarioController.excluiUsuario)
+router.put('/:usuarioId', usuarioController.editaUsuario)
+router.delete('/:usuarioId', usuarioController.excluiUsuario)
+router.get('/:usuarioId', usuarioController.listaUsuarioPorId)
 router.get('/', usuarioController.listaUsuarios)
-router.get('/user/:userId', usuarioController.listaUsuarioPorId)
 
 module.exports = router

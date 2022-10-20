@@ -81,7 +81,7 @@ exports.listaColaboradorPorId = async (colaboradorId) => {
 
     try {
 
-        const colaborador = await repositories.find({id: colaboradorId})
+        const colaborador = await repositories.findOne(colaboradorId)
 
         if (!colaborador) {
 

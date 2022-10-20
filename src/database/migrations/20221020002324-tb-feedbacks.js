@@ -39,7 +39,7 @@ module.exports = {
       },
       acoesEsperadas: {
 
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       metas: {
 

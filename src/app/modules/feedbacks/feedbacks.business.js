@@ -81,7 +81,7 @@ exports.listaFeedbackPorId = async (feedbackId) => {
 
     try {
 
-        const feedback = await repositories.find({id: feedbackId})
+        const feedback = await repositories.findOne(feedbackId)
 
         if (!feedback) {
 

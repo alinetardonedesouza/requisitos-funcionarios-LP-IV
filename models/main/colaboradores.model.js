@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         telefone: {
 
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER(11),
         },
         nome: {
 

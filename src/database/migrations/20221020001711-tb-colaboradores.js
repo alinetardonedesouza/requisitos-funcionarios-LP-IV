@@ -15,7 +15,7 @@ module.exports = {
       },
       telefone: {
 
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(11),
       },
       nome: {
 

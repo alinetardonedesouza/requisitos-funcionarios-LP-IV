@@ -7,11 +7,28 @@ class clsUsuarios {
 
             const { usuario } = req.body
 
-            if (!usuario) return res.status(400).send("Parâmetros não enviados.")
+            if (!usuario || !usuario.email || !usuario.senha) return res.status(400).send("Parâmetros não enviados.")
 
             let usuarioCriado = await business.criaUsuario(usuario)
             
             return res.status(201).json(usuarioCriado)
+
+        } catch (error) {
+
+            return res.status(error.code ?? 500).send(error.message)
+        }
+    }
+    static async login(req, res) {
+
+        try {
+
+            const { usuario } = req.body
+
+            if (!usuario || !usuario.email || !usuario.senha) return res.status(400).send("Parâmetros não enviados.")
+
+            let usuarioLogado = await business.login(usuario)
+            
+            return res.status(201).json(usuarioLogado)
 
         } catch (error) {
 

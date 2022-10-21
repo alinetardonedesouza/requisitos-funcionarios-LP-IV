@@ -1,7 +1,7 @@
-const { Historicos } = require('../../../../models/index')
+const { Historicos, Colaboradores } = require('../../../../models/index')
 
 exports.create = async (historico) => {
-    
+
     return await Historicos.create(historico)
 }
 
@@ -22,5 +22,5 @@ exports.find = async (filter) => {
 
 exports.findOne = async (historicoId) => {
 
-    return await Historicos.findOne({ where: {id: historicoId} })
+    return await Historicos.findOne({where: { id: historicoId }})
 }

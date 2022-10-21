@@ -3,7 +3,8 @@ const router = express.Router()
 
 const usuarioController = require('./usuarios.controller')
 
-router.post('/', usuarioController.criaUsuario)
+router.post('/cadastro', usuarioController.criaUsuario)
+router.post('/login', usuarioController.login)
 router.put('/:usuarioId', usuarioController.editaUsuario)
 router.delete('/:usuarioId', usuarioController.excluiUsuario)
 router.get('/:usuarioId', usuarioController.listaUsuarioPorId)

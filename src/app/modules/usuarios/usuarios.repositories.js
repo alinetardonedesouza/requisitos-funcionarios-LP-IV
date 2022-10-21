@@ -22,5 +22,10 @@ exports.find = async (filter) => {
 
 exports.findOne = async (usuarioId) => {
 
-    return await Usuarios.findOne({ where: {id: usuarioId} })
+    return await Usuarios.findOne({ where: { id: usuarioId } })
+}
+
+exports.findByEmail = async (email) => {
+
+    return await Usuarios.findOne({ where: { email } })
 }

@@ -23,4 +23,9 @@ function internalServerError(message = `Houve um erro ao realizar a requisição
     return { code: 500, message }
 }
 
-exports.errors = { customError, notFound, badRequest, conflict, internalServerError }
+function Unauthorized (message = `Não autorizado.`) {
+
+    return { code: 401, message }
+}
+
+exports.errors = { customError, notFound, badRequest, conflict, internalServerError, Unauthorized }

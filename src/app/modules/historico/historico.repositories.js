@@ -17,10 +17,10 @@ exports.delete = async (historicoId) => {
 
 exports.find = async (filter) => {
 
-    return await Historicos.findAll(filter)
+    return await Historicos.findAll({ where: filter })
 }
 
 exports.findOne = async (historicoId) => {
 
-    return await Historicos.findOne({where: { id: historicoId }})
+    return await Historicos.findOne({ where: { id: historicoId } })
 }

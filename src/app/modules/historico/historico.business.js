@@ -62,7 +62,7 @@ exports.listaHistoricos = async () => {
 
     try {
 
-        const historicos = await repositories.find()
+        const historicos = await repositories.find({})
 
         if (!historicos) {
 
@@ -89,6 +89,24 @@ exports.listaHistoricoPorId = async (historicoId) => {
         }
 
         return historico
+
+    } catch (error) {
+
+        throw error
+    }
+}
+exports.listaHistoricoPorColaborador = async (colaboradorId) => {
+
+    try {
+
+        const historicos = await repositories.find({ colaboradorId })
+
+        if (!historicos) {
+
+            throw errors.notFound(`Nenhum historico foi encontrado`)
+        }
+
+        return historicos
 
     } catch (error) {
 

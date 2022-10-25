@@ -1,4 +1,5 @@
 const repositories = require('./historico.repositories')
+const colaboradorRepositories = require('../colaboradores/colaboradores.repositories')
 const { errors } = require('../../services/error.service.js')
 const utils = require('../../services/utils.service')
 
@@ -9,7 +10,9 @@ exports.criaHistorico = async (historico) => {
 
         const historicoCriado = await repositories.create(historico)
 
-        if (!historicoCriado) {
+        const atualizaColaborador = await colaboradorRepositories.update(historico.colaboradorId, {cargoAtual: historicoCriado.cargos})
+
+        if (!historicoCriado || !atualizaColaborador) {
 
             throw errors.internalServerError(`Houve um erro ao cadastrar um historico`)
         }

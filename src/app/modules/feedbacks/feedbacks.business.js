@@ -62,7 +62,7 @@ exports.listaFeedbacks = async () => {
 
     try {
 
-        const feedbacks = await repositories.find()
+        const feedbacks = await repositories.find({})
 
         if (!feedbacks) {
 
@@ -89,6 +89,24 @@ exports.listaFeedbackPorId = async (feedbackId) => {
         }
 
         return feedback
+
+    } catch (error) {
+
+        throw error
+    }
+}
+exports.listaFeedbackPorColaborador = async (colaboradorId) => {
+
+    try {
+
+        const feedbacks = await repositories.find({colaboradorId})
+
+        if (!feedbacks) {
+
+            throw errors.notFound(`Nenhum feedback foi encontrado`)
+        }
+
+        return feedbacks
 
     } catch (error) {
 

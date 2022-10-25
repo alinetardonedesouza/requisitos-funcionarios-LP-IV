@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         telefone: {
 
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.STRING,
         },
         nome: {
 
@@ -37,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
                     msg: "E-mail inválido."
                 }
             }
+        },
+        cargoAtual: {
+
+            type: DataTypes.STRING,
         },
         createdAt: {
 
@@ -66,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'colaboradorId',
             as: 'feedbacks'
         })
-        
+
         Colaboradores.hasMany(models.Historicos, {
 
             foreignKey: 'colaboradorId',

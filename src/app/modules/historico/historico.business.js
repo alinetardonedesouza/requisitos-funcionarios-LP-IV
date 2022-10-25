@@ -1,5 +1,7 @@
 const repositories = require('./historico.repositories')
 const { errors } = require('../../services/error.service.js')
+const utils = require('../../services/utils.service')
+
 
 exports.criaHistorico = async (historico) => {
 
@@ -64,6 +66,16 @@ exports.listaHistoricos = async () => {
 
         const historicos = await repositories.find({})
 
+        for (let historico of historicos) {
+            
+            if (historico.dataInicio) {
+                historico.dataValues.dataInicio = utils.dateToBRFormat(historico.dataInicio)
+            }
+            if (historico.dataFim) {
+                historico.dataValues.dataFim = utils.dateToBRFormat(historico.dataFim)
+            }
+        }
+
         if (!historicos) {
 
             throw errors.notFound(`Nenhum historico foi encontrado`)
@@ -82,10 +94,18 @@ exports.listaHistoricoPorId = async (historicoId) => {
     try {
 
         const historico = await repositories.findOne(historicoId)
-
+        
         if (!historico) {
 
             throw errors.notFound(`Nenhum historico foi encontrado`)
+        }
+        
+        if (historico.dataInicio) {
+            historico.dataValues.dataInicio = utils.dateToBRFormat(historico.dataInicio)
+        }
+
+        if (historico.dataFim) {
+            historico.dataValues.dataFim = utils.dateToBRFormat(historico.dataFim)
         }
 
         return historico
@@ -100,6 +120,16 @@ exports.listaHistoricoPorColaborador = async (colaboradorId) => {
     try {
 
         const historicos = await repositories.find({ colaboradorId })
+
+        for (let historico of historicos) {
+            
+            if (historico.dataInicio) {
+                historico.dataValues.dataInicio = utils.dateToBRFormat(historico.dataInicio)
+            }
+            if (historico.dataFim) {
+                historico.dataValues.dataFim = utils.dateToBRFormat(historico.dataFim)
+            }
+        }
 
         if (!historicos) {
 

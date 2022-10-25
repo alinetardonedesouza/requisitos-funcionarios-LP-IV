@@ -2,8 +2,8 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    
+  async up(queryInterface, Sequelize) {
+
     return await queryInterface.createTable('Colaboradores', {
 
       id: {
@@ -15,7 +15,7 @@ module.exports = {
       },
       telefone: {
 
-        type: Sequelize.INTEGER(11),
+        type: Sequelize.STRING,
       },
       nome: {
 
@@ -42,6 +42,10 @@ module.exports = {
           }
         }
       },
+      cargoAtual: {
+        
+        type: Sequelize.STRING,
+      },
       createdAt: {
 
         type: Sequelize.DATE
@@ -57,7 +61,7 @@ module.exports = {
     })
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Colaboradores')
   }
 };

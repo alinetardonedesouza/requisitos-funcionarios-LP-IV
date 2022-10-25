@@ -1,5 +1,6 @@
 const repositories = require('./colaboradores.repositories')
 const { errors } = require('../../services/error.service.js')
+const utils = require('../../services/utils.service')
 
 exports.criaColaborador = async (colaborador) => {
 
@@ -64,6 +65,13 @@ exports.listaColaboradores = async () => {
 
         const colaboradores = await repositories.find()
 
+        for (let colaborador of colaboradores) {
+            
+            if (colaborador.nascimento) {
+                colaborador.dataValues.nascimento = utils.dateToBRFormat(colaborador.nascimento)
+            }
+        }
+
         if (!colaboradores) {
 
             throw errors.notFound(`Nenhum colaborador foi encontrado`)
@@ -82,6 +90,10 @@ exports.listaColaboradorPorId = async (colaboradorId) => {
     try {
 
         const colaborador = await repositories.findOne(colaboradorId)
+
+        if (colaborador.nascimento) {
+            colaborador.dataValues.nascimento = utils.dateToBRFormat(colaborador.nascimento)
+        }
 
         if (!colaborador) {
 

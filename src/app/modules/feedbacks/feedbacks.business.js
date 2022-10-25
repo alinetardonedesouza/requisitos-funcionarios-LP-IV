@@ -1,5 +1,7 @@
 const repositories = require('./feedbacks.repositories')
 const { errors } = require('../../services/error.service.js')
+const utils = require('../../services/utils.service')
+
 
 exports.criaFeedback = async (feedback) => {
 
@@ -64,6 +66,12 @@ exports.listaFeedbacks = async () => {
 
         const feedbacks = await repositories.find({})
 
+        for (let feedback of feedbacks) {
+            
+            if (feedback.data) {
+                feedback.dataValues.data = utils.dateToBRFormat(feedback.data)
+            }
+        }
         if (!feedbacks) {
 
             throw errors.notFound(`Nenhum feedback foi encontrado`)
@@ -83,6 +91,10 @@ exports.listaFeedbackPorId = async (feedbackId) => {
 
         const feedback = await repositories.findOne(feedbackId)
 
+        if (feedback.data) {
+            feedback.dataValues.data = utils.dateToBRFormat(feedback.data)
+        }
+
         if (!feedback) {
 
             throw errors.notFound(`Nenhum feedback foi encontrado`)
@@ -100,6 +112,13 @@ exports.listaFeedbackPorColaborador = async (colaboradorId) => {
     try {
 
         const feedbacks = await repositories.find({colaboradorId})
+
+        for (let feedback of feedbacks) {
+            
+            if (feedback.data) {
+                feedback.dataValues.data = utils.dateToBRFormat(feedback.data)
+            }
+        }
 
         if (!feedbacks) {
 

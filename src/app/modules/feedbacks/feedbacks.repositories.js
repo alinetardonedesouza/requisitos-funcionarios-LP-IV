@@ -17,7 +17,7 @@ exports.delete = async (feedbackId) => {
 
 exports.find = async (filter) => {
 
-    return await Feedbacks.findAll(filter)
+    return await Feedbacks.findAll({ where: filter })
 }
 
 exports.findOne = async (feedbackId) => {

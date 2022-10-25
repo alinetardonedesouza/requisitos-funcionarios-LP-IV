@@ -85,6 +85,22 @@ class clsFeedbacks {
             return res.status(error.code ?? 500).send(error.message)
         }
     }
+
+    static async listaFeedbackPorColaborador(req, res) {
+
+        try {
+
+            const { colaboradorId } = req.params
+
+            let feedbacks = await business.listaFeedbackPorColaborador(colaboradorId)
+
+            return res.status(200).json(feedbacks)
+
+        } catch (error) {
+
+            return res.status(error.code ?? 500).send(error.message)
+        }
+    }
 }
 
 module.exports = clsFeedbacks

@@ -8,6 +8,9 @@ exports.criaHistorico = async (historico) => {
 
     try {
 
+        historico.dataInicio = utils.dateToDatabaseFormat(historico.dataInicio)
+        historico.dataFim = utils.dateToDatabaseFormat(historico.dataFim)
+
         const historicoCriado = await repositories.create(historico)
 
         const atualizaColaborador = await colaboradorRepositories.update(historico.colaboradorId, {cargoAtual: historicoCriado.cargos})
@@ -29,6 +32,9 @@ exports.editaHistorico = async (historicoId, historico) => {
 
     try {
 
+        historico.dataInicio = utils.dateToDatabaseFormat(historico.dataInicio)
+        historico.dataFim = utils.dateToDatabaseFormat(historico.dataFim)
+        
         const historicoEditado = await repositories.update(historicoId, historico)
 
         if (!historicoEditado) {

@@ -27,6 +27,8 @@ exports.editaColaborador = async (colaboradorId, colaborador) => {
 
     try {
 
+        colaborador.nascimento = utils.dateToDatabaseFormat(colaborador.nascimento)
+
         const colaboradorEditado = await repositories.update(colaboradorId, colaborador)
 
         if (!colaboradorEditado) {

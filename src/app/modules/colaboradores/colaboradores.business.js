@@ -6,6 +6,8 @@ exports.criaColaborador = async (colaborador) => {
 
     try {
 
+        colaborador.nascimento = utils.dateToDatabaseFormat(colaborador.nascimento)
+
         const colaboradorCriado = await repositories.create(colaborador)
 
         if (!colaboradorCriado) {
